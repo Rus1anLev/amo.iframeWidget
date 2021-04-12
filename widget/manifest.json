@@ -5,7 +5,7 @@
     "short_description": "widget.short_description",
     "version": "1.0.1",
     "interface_version": 2,
-    "init_once": true,
+    "init_once": false,
     "locale": [
       "ru",
       "en"
@@ -17,9 +17,9 @@
     }
   },
   "locations": [
-    "ccard-1",
+    "ccard-0",
     "clist-0",
-    "lcard-1",
+    "lcard-0",
     "llist-0",
     "settings",
     "digital_pipeline",

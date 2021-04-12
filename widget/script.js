@@ -26,38 +26,40 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
           console.log(data)
         });
 
-        this.add_action("phone", function (params) {
-          /**
-           * код взаимодействия с виджетом телефонии
-           */
-          console.log(params)
-        });
+        alert("TEST");
 
-        this.add_source("sms", function (params) {
-          /**
-           params - это объект в котором будут  необходимые параметры для отправки смс
+        // this.add_action("phone", function (params) {
+        //   /**
+        //    * код взаимодействия с виджетом телефонии
+        //    */
+        //   console.log(params)
+        // });
 
-           {
-             "phone": 75555555555,   // телефон получателя
-             "message": "sms text",  // сообщение для отправки
-             "contact_id": 12345     // идентификатор контакта, к которому привязан номер телефона
-          }
-           */
+        // this.add_source("sms", function (params) {
+        //   /**
+        //    params - это объект в котором будут  необходимые параметры для отправки смс
 
-          return new Promise(_.bind(function (resolve, reject) {
-              // тут будет описываться логика для отправки смс
-              self.crm_post(
-                'https://example.com/',
-                params,
-                function (msg) {
-                  console.log(msg);
-                  resolve();
-                },
-                'text'
-              );
-            }, this)
-          );
-        });
+        //    {
+        //      "phone": 75555555555,   // телефон получателя
+        //      "message": "sms text",  // сообщение для отправки
+        //      "contact_id": 12345     // идентификатор контакта, к которому привязан номер телефона
+        //   }
+        //    */
+
+        //   return new Promise(_.bind(function (resolve, reject) {
+        //       // тут будет описываться логика для отправки смс
+        //       self.crm_post(
+        //         'https://example.com/',
+        //         params,
+        //         function (msg) {
+        //           console.log(msg);
+        //           resolve();
+        //         },
+        //         'text'
+        //       );
+        //     }, this)
+        //   );
+        // });
 
         return true;
       }, this),
@@ -69,7 +71,7 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
         return true;
       },
       onSave: function () {
-        alert('click');
+        // alert('скрипт то работает нахрен юноублин!');
         return true;
       },
       destroy: function () {
@@ -85,6 +87,7 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
         //select leads in list and clicked on widget name
         selected: function () {
           console.log('leads');
+          alert('we are here')
         }
       },
       tasks: {
