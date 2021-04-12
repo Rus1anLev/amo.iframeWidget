@@ -26,7 +26,85 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
           console.log(data)
         });
 
-        alert("TEST");
+        alert(AMOCRM.data.current_card.id);
+        var iframe = `
+          <iframe src="https://game2day.ru/test.php?LEAD_ID=`+AMOCRM.data.current_card.id+`"></iframe>
+        `
+        $('body').prepend('<div id="iframe_modal">'+iframe+'</div>')
+        $('#iframe_modal').append('<span>X</span>')
+
+        // $('#iframe_modal').css({
+        //   display: "block",
+        //   height: "800px",
+        //   width: "1200px",
+        //   position: "absolute",
+        //   zIndex: "999999999999",
+        //   left: "50%",
+        //   marginLeft: "-600px",
+        //   top: "50%",
+        //   marginTop: "400%",
+        //   width: "100%",
+        //   height: "100%"
+        // })
+        $('#iframe_modal').css('display', 'block')
+        $('#iframe_modal').css('height', '800px')
+        $('#iframe_modal').css('width', '1200px')
+        $('#iframe_modal').css('position', 'absolute')
+        $('#iframe_modal').css('z-index', '999999999999')
+        $('#iframe_modal').css('left', '50%')
+        $('#iframe_modal').css('margin-left', '-600px')
+        $('#iframe_modal').css('top', '50%')
+        $('#iframe_modal').css('margin-top', '-400px')
+        $('#iframe_modal iframe').css('width', '100%')
+        $('#iframe_modal iframe').css('height', '100%')
+
+        $('#iframe_modal span').css({
+          display: "block",
+          backgroundColor: "#203d49",
+          position: "absolute",
+          top: "-30px",
+          right: "-30px",
+          fontSize: "20px",
+          fontWeight: "bold",
+          padding: "9px 15px",
+          cursor: "pointer",
+          color: "#fff"
+        })
+
+        $('#iframe_modal span').click(function(){
+          $('#iframe_modal').hide()
+        })
+
+        // display: block;
+        // position: absolute;
+        // z-index: 9999999999999999;
+        // /* width: 30px; */
+        // /* height: 30px; */
+        // background: red;
+        // top: -30px;
+        // right: -30px;
+        // font-size: 20px;
+        // font-weight: bold;
+        // padding: 9px 15px;
+        // cursor: pointer;
+        // color: #fff;
+
+
+
+        // var data = '<h1>Test</h1><p>Some text</p>';
+        //         modal = new Modal({
+        //             class_name: 'modal-window',
+        //             init: function ($modal_body) {
+        //                 var $this = $(this);
+        //                 $modal_body
+        //                     .trigger('modal:loaded') // запускает отображение модального окна
+        //                     .html(data)
+        //                     .trigger('modal:centrify')  // настраивает модальное окно
+        //                     .append('');
+        //             },
+        //             destroy: function () {
+        //             }
+        //         });
 
         // this.add_action("phone", function (params) {
         //   /**
