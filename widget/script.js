@@ -26,12 +26,31 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
           console.log(data)
         });
 
-        alert(AMOCRM.data.current_card.id);
+        // alert(AMOCRM.data.current_card.id);
         var iframe = `
           <iframe src="https://game2day.ru/test.php?LEAD_ID=`+AMOCRM.data.current_card.id+`"></iframe>
         `
         $('body').prepend('<div id="iframe_modal">'+iframe+'</div>')
         $('#iframe_modal').append('<span>X</span>')
+        $('.card-fields__fields-block').append('<button id="link2site">Привязать сайту</button>')
+        $('#link2site').css({
+          backgroundColor: "#2da9d7",
+          color: "#fff",
+          margin: "0px 30px",
+          display: "block",
+          padding: "10px 50px",
+          borderRadius: "3px",
+          marginBottom: "20px",
+          cursor: "pointer"
+        })
+        // background: #2da9d7;
+        // color: #fff;
+        // margin: 0px 30px;
+        // display: block;
+        // padding: 10px 50px;
+        // border-radius: 3px;
+        // margin-bottom: 20px;
+        // cursor: pointer;
 
         // $('#iframe_modal').css({
         //   display: "block",
@@ -46,7 +65,7 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
         //   width: "100%",
         //   height: "100%"
         // })
-        $('#iframe_modal').css('display', 'block')
+        $('#iframe_modal').css('display', 'none')
         $('#iframe_modal').css('height', '800px')
         $('#iframe_modal').css('width', '1200px')
         $('#iframe_modal').css('position', 'absolute')
@@ -73,6 +92,10 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
 
         $('#iframe_modal span').click(function(){
           $('#iframe_modal').hide()
+        })
+
+        $('#link2site').click(function(){
+          $('#iframe_modal').show()
         })
 
         // display: block;
