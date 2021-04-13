@@ -1,9 +1,9 @@
 {
     "widget":{
         "name":"iFrame widget",
-        "short_description":"Короткое описание виджета",
-        "description":"Полное описание виджета",
-        "tour_description":"Описание виджета"
+        "short_description":"Виджет позволяет передавать в iframe ID сделки",
+        "description":"Виджет позволяет передавать в iframe ID сделки",
+        "tour_description":"Виджет позволяет передавать в iframe ID сделки"
     },
     "settings":{
         "siteLink":"Ссылка на страницу сайта, которая будет показываться в iFrame",
@@ -11,21 +11,5 @@
         "buttonText": "Надпись на кнопке в карточке",
         "modalWidth": "Ширина модального окна (1200, если не заполнено)",
         "modalHeight": "Высота модального окна (800, если не заполнено)"
-    },
-    "advanced":{
-        "title":"iFrame widget"
-    },
-    "salesbot":{
-        "button_title":"Заголовок кнопки",
-        "button_caption":"Описание кнопки",
-        "button_title_default_value":"Заголовок кнопки",
-        "button_caption_default_value":"Описание кнопки",
-        "text":"Текст",
-        "number":"Число",
-        "url":"URL",
-        "handler_name":"Название обработчика"
-    },
-    "dp":{
-        "message": "Сообщение"
     }
 }

@@ -16,19 +16,11 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
 
     this.callbacks = {
       render: function () {
-        console.log('render');
         return true;
       },
       init: _.bind(function () {
-        console.log('init');
 
         let settings = self.get_settings()
-
-        AMOCRM.addNotificationCallback(self.get_settings().widget_code, function (data) {
-          console.log(data)
-        });
-
-        console.log(settings)
 
         let modalHeight, modalWidth, modalMarginTop, modalMarginLeft
 
@@ -110,14 +102,10 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
         return true;
       }, this),
       bind_actions: function () {
-        console.log('bind_actions');
-        return true;
-      },
-      settings: function () {
+
         return true;
       },
       onSave: function () {
-        // alert('скрипт то работает нахрен юноублин!');
         return true;
       },
       destroy: function () {
@@ -125,59 +113,59 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
       },
       contacts: {
         //select contacts in list and clicked on widget name
-        selected: function () {
-          console.log('contacts');
-        }
+        // selected: function () {
+          // console.log('contacts');
+        // }
       },
       leads: {
         //select leads in list and clicked on widget name
-        selected: function () {
-          console.log('leads');
-          alert('we are here')
-        }
+        // selected: function () {
+        //   console.log('leads');
+        //   alert('we are here')
+        // }
       },
-      tasks: {
-        //select taks in list and clicked on widget name
-        selected: function () {
-          console.log('tasks');
-        }
-      },
-      advancedSettings: _.bind(function () {
-        var $work_area = $('#work-area-' + self.get_settings().widget_code),
-          $save_button = $(
-            Twig({ref: '/tmpl/controls/button.twig'}).render({
-              text: 'Сохранить',
-              class_name: 'button-input_blue button-input-disabled js-button-save-' + self.get_settings().widget_code,
-              additional_data: ''
-            })
-          ),
-          $cancel_button = $(
-            Twig({ref: '/tmpl/controls/cancel_button.twig'}).render({
-              text: 'Отмена',
-              class_name: 'button-input-disabled js-button-cancel-' + self.get_settings().widget_code,
-              additional_data: ''
-            })
-          );
+      // tasks: {
+      //   //select taks in list and clicked on widget name
+      //   selected: function () {
+      //     console.log('tasks');
+      //   }
+      // },
+      // advancedSettings: _.bind(function () {
+      //   var $work_area = $('#work-area-' + self.get_settings().widget_code),
+      //     $save_button = $(
+      //       Twig({ref: '/tmpl/controls/button.twig'}).render({
+      //         text: 'Сохранить',
+      //         class_name: 'button-input_blue button-input-disabled js-button-save-' + self.get_settings().widget_code,
+      //         additional_data: ''
+      //       })
+      //     ),
+      //     $cancel_button = $(
+      //       Twig({ref: '/tmpl/controls/cancel_button.twig'}).render({
+      //         text: 'Отмена',
+      //         class_name: 'button-input-disabled js-button-cancel-' + self.get_settings().widget_code,
+      //         additional_data: ''
+      //       })
+      //     );
 
-        console.log('advancedSettings');
+      //   console.log('advancedSettings');
 
-        $save_button.prop('disabled', true);
-        $('.content__top__preset').css({float: 'left'});
+      //   $save_button.prop('disabled', true);
+      //   $('.content__top__preset').css({float: 'left'});
 
-        $('.list__body-right__top').css({display: 'block'})
-          .append('<div class="list__body-right__top__buttons"></div>');
-        $('.list__body-right__top__buttons').css({float: 'right'})
-          .append($cancel_button)
-          .append($save_button);
+      //   $('.list__body-right__top').css({display: 'block'})
+      //     .append('<div class="list__body-right__top__buttons"></div>');
+      //   $('.list__body-right__top__buttons').css({float: 'right'})
+      //     .append($cancel_button)
+      //     .append($save_button);
 
-        self.getTemplate('advanced_settings', {}, function (template) {
-          var $page = $(
-            template.render({title: self.i18n('advanced').title, widget_code: self.get_settings().widget_code})
-          );
+      //   self.getTemplate('advanced_settings', {}, function (template) {
+      //     var $page = $(
+      //       template.render({title: self.i18n('advanced').title, widget_code: self.get_settings().widget_code})
+      //     );
 
-          $work_area.append($page);
-        });
-      }, self),
+      //     $work_area.append($page);
+      //   });
+      // }, self),
 
       /**
        * Метод срабатывает, когда пользователь в конструкторе Salesbot размещает один из хендлеров виджета.
@@ -195,32 +183,32 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
        *
        * @return {{}}
        */
-      onSalesbotDesignerSave: function (handler_code, params) {
-        var salesbot_source = {
-            question: [],
-            require: []
-          },
-          button_caption = params.button_caption || "",
-          button_title = params.button_title || "",
-          text = params.text || "",
-          number = params.number || 0,
-          handler_template = {
-            handler: "show",
-            params: {
-              type: "buttons",
-              value: text + ' ' + number,
-              buttons: [
-                button_title + ' ' + button_caption,
-              ]
-            }
-          };
+      // onSalesbotDesignerSave: function (handler_code, params) {
+      //   var salesbot_source = {
+      //       question: [],
+      //       require: []
+      //     },
+      //     button_caption = params.button_caption || "",
+      //     button_title = params.button_title || "",
+      //     text = params.text || "",
+      //     number = params.number || 0,
+      //     handler_template = {
+      //       handler: "show",
+      //       params: {
+      //         type: "buttons",
+      //         value: text + ' ' + number,
+      //         buttons: [
+      //           button_title + ' ' + button_caption,
+      //         ]
+      //       }
+      //     };
 
-        console.log(params);
+      //   console.log(params);
 
-        salesbot_source.question.push(handler_template);
+      //   salesbot_source.question.push(handler_template);
 
-        return JSON.stringify([salesbot_source]);
-      },
+      //   return JSON.stringify([salesbot_source]);
+      // },
     };
     return this;
   };
