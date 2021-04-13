@@ -1,17 +1,19 @@
 {
     "widget":{
-        "name":"Мой виджет",
+        "name":"iFrame widget",
         "short_description":"Короткое описание виджета",
         "description":"Полное описание виджета",
         "tour_description":"Описание виджета"
     },
     "settings":{
-        "login":"Логин",
-        "api_key":"ключ API",
-        "account":"Аккаунт"
+        "siteLink":"Ссылка на страницу сайта, которая будет показываться в iFrame",
+        "getParam":"GET параметр на сайте, в который передается ID сделки",
+        "buttonText": "Надпись на кнопке в карточке",
+        "modalWidth": "Ширина модального окна (1200, если не заполнено)",
+        "modalHeight": "Высота модального окна (800, если не заполнено)"
     },
     "advanced":{
-        "title":"Заголовок меню в настройках"
+        "title":"iFrame widget"
     },
     "salesbot":{
         "button_title":"Заголовок кнопки",

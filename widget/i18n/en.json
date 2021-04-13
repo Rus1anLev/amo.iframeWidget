@@ -6,9 +6,11 @@
         "tour_description":"Tour description"
     },
     "settings":{
-        "login":"User login",
-        "api_key":"API key",
-        "account":"Account"
+        "siteLink":"Link to the site where we get iframe",
+        "getParam":"Name of the GET param of lead id",
+        "buttonText": "Modal button text",
+        "modalWidth": "Modal width (1200 by default, not required)",
+        "modalHeight": "Modal height (800 by default, not required)"
     },
     "advanced":{
         "title":"Settings menu item title"

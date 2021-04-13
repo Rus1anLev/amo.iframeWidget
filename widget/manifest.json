@@ -12,8 +12,8 @@
     ],
     "installation": true,
     "support": {
-      "link": "https://www.amocrm.com",
-      "email": "support@amocrm.com"
+      "link": "http://devision.by",
+      "email": "support@devision.by"
     }
   },
   "locations": [
@@ -38,20 +38,30 @@
     "tour_description": "widget.tour_description"
   },
   "settings": {
-    "login": {
-      "name": "settings.login",
+    "siteLink": {
+      "name": "settings.siteLink",
       "type": "text",
       "required": true
     },
-    "api_key": {
-      "name": "settings.api_key",
+    "getParam": {
+      "name": "settings.getParam",
       "type": "text",
       "required": true
     },
-    "account": {
-      "name": "settings.account",
+    "buttonText": {
+      "name": "settings.buttonText",
       "type": "text",
       "required": true
+    },
+    "modalWidth": {
+      "name": "settings.modalWidth",
+      "type": "text",
+      "required": false
+    },
+    "modalHeight": {
+      "name": "settings.modalHeight",
+      "type": "text",
+      "required": false
     }
   },
   "dp": {

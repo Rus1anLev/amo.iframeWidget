@@ -22,17 +22,41 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
       init: _.bind(function () {
         console.log('init');
 
+        let settings = self.get_settings()
+
         AMOCRM.addNotificationCallback(self.get_settings().widget_code, function (data) {
           console.log(data)
         });
 
-        // alert(AMOCRM.data.current_card.id);
+        console.log(settings)
+
+        let modalHeight, modalWidth, modalMarginTop, modalMarginLeft
+
+        if (settings.modalWidth === undefined || settings.modalWidth == "") {
+          modalWidth = "1200"
+          modalMarginLeft = "600"
+        } else {
+          modalWidth = settings.modalWidth
+          modalMarginLeft = parseInt(settings.modalWidth) / 2
+        }
+
+        if (settings.modalHeight === undefined || settings.modalHeight == "") {
+          modalHeight = "800"
+          modalMarginTop = "400"
+        } else {
+          modalHeight = settings.modalHeight
+          modalMarginTop = parseInt(settings.modalHeight) / 2
+        }
+
         var iframe = `
-          <iframe src="https://game2day.ru/test.php?LEAD_ID=`+AMOCRM.data.current_card.id+`"></iframe>
+        <iframe src="`+settings.siteLink+`?`+settings.getParam+`=`+AMOCRM.data.current_card.id+`"></iframe>
         `
         $('body').prepend('<div id="iframe_modal">'+iframe+'</div>')
+
         $('#iframe_modal').append('<span>X</span>')
-        $('.card-fields__fields-block').append('<button id="link2site">Привязать сайту</button>')
+
+        $('.card-fields__fields-block').append('<button id="link2site">'+settings.buttonText+'</button>')
+
         $('#link2site').css({
           backgroundColor: "#2da9d7",
           color: "#fff",
@@ -43,39 +67,24 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
           marginBottom: "20px",
           cursor: "pointer"
         })
-        // background: #2da9d7;
-        // color: #fff;
-        // margin: 0px 30px;
-        // display: block;
-        // padding: 10px 50px;
-        // border-radius: 3px;
-        // margin-bottom: 20px;
-        // cursor: pointer;
 
-        // $('#iframe_modal').css({
-        //   display: "block",
-        //   height: "800px",
-        //   width: "1200px",
-        //   position: "absolute",
-        //   zIndex: "999999999999",
-        //   left: "50%",
-        //   marginLeft: "-600px",
-        //   top: "50%",
-        //   marginTop: "400%",
-        //   width: "100%",
-        //   height: "100%"
-        // })
-        $('#iframe_modal').css('display', 'none')
-        $('#iframe_modal').css('height', '800px')
-        $('#iframe_modal').css('width', '1200px')
-        $('#iframe_modal').css('position', 'absolute')
-        $('#iframe_modal').css('z-index', '999999999999')
-        $('#iframe_modal').css('left', '50%')
-        $('#iframe_modal').css('margin-left', '-600px')
-        $('#iframe_modal').css('top', '50%')
-        $('#iframe_modal').css('margin-top', '-400px')
-        $('#iframe_modal iframe').css('width', '100%')
-        $('#iframe_modal iframe').css('height', '100%')
+        $('#iframe_modal').css({
+          display: "none",
+          height: modalHeight+"px",
+          width: modalWidth+"px",
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          zIndex: "99",
+          marginLeft: "-"+modalMarginLeft+"px",
+          marginTop: "-"+modalMarginTop+"px",
+          border: "8px solid #162b3a"
+        })
+
+        $('#iframe_modal iframe').css({
+          width: '100%',
+          height: '100%'
+        })
 
         $('#iframe_modal span').css({
           display: "block",
@@ -97,70 +106,6 @@ define(['jquery', 'underscore', 'twigjs'], function ($, _, Twig) {
         $('#link2site').click(function(){
           $('#iframe_modal').show()
         })
-
-        // display: block;
-        // position: absolute;
-        // z-index: 9999999999999999;
-        // /* width: 30px; */
-        // /* height: 30px; */
-        // background: red;
-        // top: -30px;
-        // right: -30px;
-        // font-size: 20px;
-        // font-weight: bold;
-        // padding: 9px 15px;
-        // cursor: pointer;
-        // color: #fff;
-
-
-
-        // var data = '<h1>Test</h1><p>Some text</p>';
-        //         modal = new Modal({
-        //             class_name: 'modal-window',
-        //             init: function ($modal_body) {
-        //                 var $this = $(this);
-        //                 $modal_body
-        //                     .trigger('modal:loaded') // запускает отображение модального окна
-        //                     .html(data)
-        //                     .trigger('modal:centrify')  // настраивает модальное окно
-        //                     .append('');
-        //             },
-        //             destroy: function () {
-        //             }
-        //         });
-
-        // this.add_action("phone", function (params) {
-        //   /**
-        //    * код взаимодействия с виджетом телефонии
-        //    */
-        //   console.log(params)
-        // });
-
-        // this.add_source("sms", function (params) {
-        //   /**
-        //    params - это объект в котором будут  необходимые параметры для отправки смс
-
-        //    {
-        //      "phone": 75555555555,   // телефон получателя
-        //      "message": "sms text",  // сообщение для отправки
-        //      "contact_id": 12345     // идентификатор контакта, к которому привязан номер телефона
-        //   }
-        //    */
-
-        //   return new Promise(_.bind(function (resolve, reject) {
-        //       // тут будет описываться логика для отправки смс
-        //       self.crm_post(
-        //         'https://example.com/',
-        //         params,
-        //         function (msg) {
-        //           console.log(msg);
-        //           resolve();
-        //         },
-        //         'text'
-        //       );
-        //     }, this)
-        //   );
-        // });
 
         return true;
       }, this),
